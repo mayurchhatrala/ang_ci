@@ -1,0 +1,57 @@
+[07-May-2015 07:54:44 UTC] PHP Warning:  require(application/config/constants.php): failed to open stream: No such file or directory in /home/stylekart/public_html/2015/cmsdemo/system/core/CodeIgniter.php on line 62
+[07-May-2015 07:54:44 UTC] PHP Fatal error:  require(): Failed opening required 'application/config/constants.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/stylekart/public_html/2015/cmsdemo/system/core/CodeIgniter.php on line 62
+[07-May-2015 09:11:12 UTC] PHP Warning:  require(application/front/config/constants.php): failed to open stream: No such file or directory in /home/stylekart/public_html/2015/cmsdemo/system/core/CodeIgniter.php on line 62
+[07-May-2015 09:11:12 UTC] PHP Fatal error:  require(): Failed opening required 'application/front/config/constants.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/stylekart/public_html/2015/cmsdemo/system/core/CodeIgniter.php on line 62
+[16-Sep-2015 07:39:31 UTC] PHP Warning:  PHP Startup: PDO: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20131226
+These options need to match
+ in Unknown on line 0
+[16-Sep-2015 07:39:31 UTC] PHP Warning:  PHP Startup: pdo_sqlite: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20131226
+These options need to match
+ in Unknown on line 0
+[16-Sep-2015 07:39:31 UTC] PHP Warning:  PHP Startup: mongo: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20131226
+These options need to match
+ in Unknown on line 0
+[16-Sep-2015 07:39:31 UTC] PHP Warning:  PHP Startup: pdo_mysql: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20131226
+These options need to match
+ in Unknown on line 0
+[01-Oct-2015 07:55:02 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[07-Oct-2015 14:04:50 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 03:52:51 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 03:55:27 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 03:55:37 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 03:56:37 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:10:19 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:10:28 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:12:27 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:13:02 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:14:29 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:15:44 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:16:39 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:20:48 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:21:31 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:30:03 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:31:29 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:31:29 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:33:10 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:33:43 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:34:22 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:44:25 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:44:39 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:48:58 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 04:51:09 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:41:52 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:43:03 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:46:52 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:52:41 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:53:54 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:53:59 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:55:18 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 06:22:33 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0

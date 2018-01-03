@@ -1,0 +1,224 @@
+'use strict';
+
+var _URL = window.URL || window.webkitURL;
+
+var images = [];
+
+/* Controllers */
+app.controller('WeeklyDataCtrl', ['$scope', '$http', '$state', 'toaster', '$stateParams', '$timeout', '$location',
+    function ($scope, $http, $state, toaster, $stateParams, $timeout, $location) {
+
+        var requestId;
+        if (requestedId == '')
+            requestId = 0;
+        else
+            requestId = parseInt(requestedId);
+
+        $scope.adsImageArray = [];
+        /*
+         *  TO SET THE FORM VALUE
+         */
+
+        if (requestId !== 0) {
+
+            $http.post(BASEURL + 'weeklyads/formData', {requestId: requestId}).then(function (response) {
+
+                $scope.weekly = {
+                    iCategoryID: response.data.categoryId,
+                    iRetailerID: response.data.retailerId,
+                    iAdsID: response.data.adsId,
+                    vAdsLink: response.data.adsLink,
+                    vAdsImages: response.data.adsImage,
+                };
+
+                if (requestId !== 0) {
+                    setTimeout(function () {
+                        angular.element(document.getElementById('iCategoryID')).scope().checkRetailerList($scope.weekly.iCategoryID);    
+                    }, 1000);
+                }
+
+                $scope.adsImageArray = response.data.adsImage;
+
+            });
+        } else {
+            $scope.weekly = {};
+        }
+
+        /*
+         *      GET CATEGORY LIST
+         */
+        $scope.checkCategoryList = function () {
+
+            $http.get(BASEURL + 'category/categoryRecord').then(function (responses) {
+                $scope.categoryList = responses.data.aaData;
+            });
+        };
+
+        /*
+         *      GET CATEGORY LIST
+         */
+        $scope.checkRetailerList = function (rID) {
+
+            $http.post(BASEURL + 'retailer/RetailerList', {'iRetailrID': rID}).then(function (responses) {
+                $scope.retailerList = responses.data;
+            });
+        };
+
+        /*
+         *      REMOVE IMAGE FROM ARRAY
+         */
+        $scope.removeImage = function (imageID) {
+
+            $http.post(BASEURL + 'weeklyads/operation/D/1/' + imageID).then(function (responses) {
+                delete $scope.adsImageArray[imageID];
+                console.log($scope.adsImageArray);
+            });
+        }
+
+
+        $scope.saveFormClick = function () {
+
+            var posturl = BASEURL + 'weeklyads/operation/I/1';
+            if (requestId !== 0)
+                posturl = BASEURL + 'weeklyads/operation/U/1/' + requestId;
+
+            $http({
+                method: 'POST',
+                url: posturl,
+                headers: {'Content-Type': 'json'},
+                data: {
+                    vAdsLink: $scope.weekly.vAdsLink,
+                    iCategoryID: $scope.weekly.iCategoryID,
+                    iRetailerID: $scope.weekly.iRetailerID,
+                    vAdsImages: images
+                },
+                transformRequest: function (data, headersGetter) {
+
+                    var formData = new FormData();
+                    angular.forEach(data, function (value, key) {
+                        if (key == 'vAdsImages') {
+                            for (var i = 0; i < data.vAdsImages.length; i++) {
+                                //add each file to the form data and iteratively name them
+                                formData.append("vAdsImages" + i, data.vAdsImages[i]);
+                            }
+                        }
+                        formData.append(key, value);
+                    });
+                    var headers = headersGetter();
+                    delete headers['Content-Type'];
+                    return formData;
+                }
+            }).success(function (response) {
+
+                switch (response.STATUS) {
+                    case 101 :
+                        //toaster.pop('warning', 'Warning', response.data.MSG);
+                        swal(response.MSG);
+                        break;
+                    case 200 :
+                        $scope.category = {};
+                        images = [];
+                        $state.go('app.weeklyads.list');
+                        var alertMsg = requestId !== 0 ? 'Updated' : 'Inserted';
+                        swal(alertMsg, response.MSG, "success");
+                        requestedId = 0;
+                        break;
+                }
+            }).error(function (data, status) {
+                toaster.pop('error', 'Error', 'Server Error');
+            });
+
+
+            /* $http.post(posturl, $scope.category).then(function (response) {
+             switch (response.data.STATUS) {
+             case 101 :
+             //toaster.pop('warning', 'Warning', response.data.MSG);
+             swal(response.data.MSG);
+             break;
+             
+             case 200 :
+             $scope.category = {};
+             $state.go('app.category.list');
+             
+             var alertMsg = requestId !== 0 ? 'Updated' : 'Inserted';
+             swal(alertMsg, response.data.MSG, "success");
+             
+             requestedId = 0;
+             break;
+             }
+             }, function (x) {
+             toaster.pop('error', 'Error', 'Server Error');
+             }); */
+
+        };
+    }]);
+
+
+// new file upload mayur
+app.directive('file', function () {
+    return {
+        scope: {file: '='},
+        link: function (scope, el, attrs) {
+
+            el.bind('change', function (event) {
+                var file = event.target.files[0];
+                scope.file = file ? file : '';
+
+                if (file.type == 'image/jpeg' || file.type == 'image/jpg' || file.type == 'image/bmp' || file.type == 'image/png') {
+                    scope.$apply(function () {
+                        for (var i = 0; i < event.target.files.length; i++) {
+                            images.push(event.target.files[i]);
+                        }
+                    });
+                } else {
+                    alert("Please select valid Image file.");
+                }
+
+            });
+        }
+    };
+});
+
+/*
+ 
+ app.directive('file', function () {
+ return {
+ scope: {file: '='},
+ require: "ngModel",
+ link: function (scope, el, attrs, ngModel) {
+ 
+ el.bind('change', function (event) {
+ 
+ var file = event.target.files[0];
+ scope.file = file ? file : undefined;
+ 
+ if (typeof (file) != 'undefined') {
+ 
+ var image;
+ image = new Image();
+ image.onload = function () {
+ 
+ if (this.width >= 1024 && this.height >= 500) {
+ console.log("The image width is " + this.width + " and image height is " + this.height);
+ // ngModel.$invalid = true;
+ ngModel.$setValidity('server', false);
+ } else {
+ // ngModel.$invalid = false;
+ ngModel.$setValidity('server', true);
+ }
+ };
+ image.src = _URL.createObjectURL(file);
+ }
+ 
+ 
+ if (file.type == 'image/jpeg' || file.type == 'image/jpg' || file.type == 'image/bmp' || file.type == 'image/png') {
+ scope.$apply();
+ } else {
+ alert("Please select valid Image file.");
+ }
+ });
+ }
+ };
+ });  
+ 
+ */

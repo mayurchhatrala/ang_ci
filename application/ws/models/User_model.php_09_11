@@ -1,0 +1,90 @@
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
+/**
+ * Description of login_model
+ * @author OpenXcell Technolabs
+ */
+class User_model extends CI_Model {
+
+    var $table, $fUploadFolder, $tblImage, $tblKey;
+    var $tblDateKey;
+
+    function __construct() {
+        parent::__construct();
+
+        $this->table = 'tbl_user';
+        $this->tblKey = 'iUserID';
+
+        // SERVER TIME
+        date_default_timezone_set('Asia/Kolkata');
+    }
+
+    /*
+     *  REGISTER USER
+     */
+
+    function addUser($requestObject) {
+
+        try {
+            if (!empty($requestObject)) {
+
+                $insData = array(
+                    'vDeviceToken' => $requestObject['vDeviceToken'],
+                    'vDeviceID' => $requestObject['vDeviceID'],
+                );
+
+                /*
+                 *  INSERT INTO THE DATABASE...
+                 */
+                $this->db->insert($this->table, $insData);
+
+                $insData['iUserID'] = $this->db->insert_id();
+
+                return array($insData);
+            }
+        } catch (Exception $ex) {
+            throw new Exception('Crud Model : Error in addRecord function - ' . $ex);
+        }
+    }
+
+    /*
+     * CHECK WHETHER Device ID IS exists
+     * OR NOT...
+     */
+
+    function checkDeviceID($phoneNo) {
+
+        try {
+            $fields[] = 'vDeviceToken AS vDeviceToken';
+
+            $fields = implode(',', $fields);
+
+            if (isset($phoneNo) && $phoneNo != '')
+                $condition[] = ' vDeviceToken = "' . $phoneNo . '"';
+
+            $condition = !empty($condition) ? ' WHERE ' . implode(' AND ', $condition) : '';
+
+            $tbl = $this->table;
+
+            $qry = 'SELECT ' . $fields . ' FROM ' . $tbl . $condition;
+
+            $res = $this->db->query($qry);
+
+            if ($res->num_rows() >= 1) {
+                return 0;
+            } else {
+                return 1;
+            }
+
+            return $this->datatableshelper->query($qry);
+        } catch (Exception $ex) {
+            throw new Exception('User Model : Error in getUserRecord function - ' . $ex);
+        }
+    }
+
+}
+
+?>

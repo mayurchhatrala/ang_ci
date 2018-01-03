@@ -1,0 +1,24 @@
+{
+    "sAjaxSource": "user/userRecord",
+    "bStateSave": true,
+    "bProcessing": true,
+    "bServerSide": true,
+    "sServerMethod": "POST",
+    "aoColumns": [
+        {
+            "mData": "userName"
+        },
+        {
+            "mData": "userEmail"
+        },
+        {
+            "mData": "userMobile"
+        }
+    ],
+    "aoColumnDefs": [
+        {
+            "aTargets": [3],
+            "mRender": "Action"
+        }
+    ]
+}

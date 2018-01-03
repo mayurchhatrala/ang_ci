@@ -1,0 +1,334 @@
+<?php
+
+if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
+require(APPPATH . '/libraries/REST_Controller.php');
+
+/**
+ * Description of login
+ * @author OpenXcell Technolabs
+ */
+class Craw extends REST_Controller {
+
+    var $MSG;
+    var $STATUS;
+    var $resp;
+
+    function __construct() {
+        parent::__construct();
+        $this->MSG = INSUFF_DATA;
+        $this->STATUS = FAIL_STATUS;
+        $this->resp = array('MESSAGE' => $this->MSG, 'STATUS' => $this->STATUS);
+        $this->load->model('craw_model');
+    }
+
+    /*
+     *      ADS BANNER LISTTING
+     */
+
+    function banner_post() {
+
+        /*
+         * TO CHECK ALL THE PARAMETER ARE BEING PASSED OR NOT ?
+         */
+
+        $allowParam = array("size");
+
+        if (checkselectedparams($this->post(), $allowParam)) {
+
+            /*
+             *      TO CHECK WETHEAR USER IS LOGGED IN OR NOT..
+             */
+
+            $result = $this->craw_model->bannerList($this->post());
+
+            if (!empty($result)) {
+
+                $this->resp = array(
+                    'MESSAGE' => BANNER_LIST_SUCC,
+                    'STATUS' => SUCCESS_STATUS,
+                    'DATA' => $result
+                );
+            } else {
+
+                $this->resp = array(
+                    'MESSAGE' => NO_DATA,
+                    'STATUS' => FAIL_STATUS
+                );
+            }
+        }
+
+        $this->response($this->resp, 200);
+    }
+
+    /*
+     *      CATALOG LIST, WEEKLY ADS LIST FOR HOME
+     */
+
+    function home_post() {
+
+        /*
+         * TO CHECK ALL THE PARAMETER ARE BEING PASSED OR NOT ?
+         */
+
+        $allowParam = array("pageid", "size", "vDeviceID");
+
+        if (checkselectedparams($this->post(), $allowParam)) {
+
+            $weeklyAds = $this->craw_model->weeklyAdsList($this->post());
+
+            $catalogs = $this->craw_model->catalogList($this->post());
+
+            if (!empty($catalogs) || !empty($weeklyAds)) {
+
+                $DATA['CATALOG'] = $catalogs;
+                $DATA['WEEKLY'] = $weeklyAds;
+
+                $this->resp = array(
+                    'MESSAGE' => HOME_LIST_SUCC,
+                    'STATUS' => SUCCESS_STATUS,
+                    'DATA' => $DATA,
+                );
+            } else {
+
+                $this->resp = array(
+                    'MESSAGE' => NO_DATA,
+                    'STATUS' => FAIL_STATUS
+                );
+            }
+        }
+        $this->response($this->resp, 200);
+    }
+
+    /*
+     *      CATEGORY LIST
+     */
+
+    function content_post() {
+
+
+        $contentS = $this->craw_model->contentList($this->post());
+
+        if (!empty($contentS)) {
+
+            $DATA['CONTENT'] = $contentS;
+
+            $this->resp = array(
+                'MESSAGE' => PAGES_LIST_SUCC,
+                'STATUS' => SUCCESS_STATUS,
+                'DATA' => $DATA,
+            );
+        } else {
+
+            $this->resp = array(
+                'MESSAGE' => NO_DATA,
+                'STATUS' => FAIL_STATUS
+            );
+        }
+
+        $this->response($this->resp, 200);
+    }
+
+    /*
+     *      CATEGORY LIST
+     */
+
+    function category_post() {
+
+        /*
+         *      TO CHECK CATEGORY LISTING
+         */
+
+        $result = $this->craw_model->categoryList($this->post());
+
+        if (!empty($result)) {
+
+            $this->resp = array(
+                'MESSAGE' => CATEGORY_LIST_SUCC,
+                'STATUS' => SUCCESS_STATUS,
+                'DATA' => $result
+            );
+        } else {
+
+            $this->resp = array(
+                'MESSAGE' => NO_DATA,
+                'STATUS' => FAIL_STATUS
+            );
+        }
+
+
+        $this->response($this->resp, 200);
+    }
+
+    /*
+     *      RETAILER LIST
+     */
+
+    function retailer_post() {
+
+        /*
+         * TO CHECK ALL THE PARAMETER ARE BEING PASSED OR NOT ?
+         */
+
+        $allowParam = array("pageid", "size", "vDeviceID");
+
+        if (checkselectedparams($this->post(), $allowParam)) {
+
+            $result = $this->craw_model->retailerList($this->post());
+
+            if (!empty($result)) {
+
+                $this->resp = array(
+                    'MESSAGE' => RETAILER_LIST_SUCC,
+                    'STATUS' => SUCCESS_STATUS,
+                    'DATA' => $result
+                );
+            } else {
+
+                $this->resp = array(
+                    'MESSAGE' => NO_DATA,
+                    'STATUS' => FAIL_STATUS
+                );
+            }
+        }
+        $this->response($this->resp, 200);
+    }
+
+    /*
+     *      RETAILER LIST
+     */
+
+    function weekly_post() {
+
+        /*
+         * TO CHECK ALL THE PARAMETER ARE BEING PASSED OR NOT ?
+         */
+
+        $allowParam = array("pageid", "size", "vDeviceID");
+
+        if (checkselectedparams($this->post(), $allowParam)) {
+
+            $result = $this->craw_model->weeklyAdsList($this->post());
+
+            if (!empty($result)) {
+
+                $this->resp = array(
+                    'MESSAGE' => WEEKLY_LIST_SUCC,
+                    'STATUS' => SUCCESS_STATUS,
+                    'DATA' => $result
+                );
+            } else {
+
+                $this->resp = array(
+                    'MESSAGE' => NO_DATA,
+                    'STATUS' => FAIL_STATUS
+                );
+            }
+        }
+        $this->response($this->resp, 200);
+    }
+
+    /*
+     *      CATALOG LIST
+     */
+
+    function catalog_post() {
+
+        /*
+         * TO CHECK ALL THE PARAMETER ARE BEING PASSED OR NOT ?
+         */
+
+        $allowParam = array("pageid", "size", "vDeviceID");
+
+        if (checkselectedparams($this->post(), $allowParam)) {
+
+            $result = $this->craw_model->catalogList($this->post());
+
+            if (!empty($result)) {
+
+                $this->resp = array(
+                    'MESSAGE' => CATALOG_LIST_SUCC,
+                    'STATUS' => SUCCESS_STATUS,
+                    'DATA' => $result
+                );
+            } else {
+
+                $this->resp = array(
+                    'MESSAGE' => NO_DATA,
+                    'STATUS' => FAIL_STATUS
+                );
+            }
+        }
+        $this->response($this->resp, 200);
+    }
+
+    /*
+     *      READ RETAILER, CATALOG, WEEKLY ADS LIST
+     */
+
+    function read_post() {
+
+        /*
+         * TO CHECK ALL THE PARAMETER ARE BEING PASSED OR NOT ?
+         */
+
+        $allowParam = array("vDeviceID");
+
+        if (checkselectedparams($this->post(), $allowParam)) {
+
+            $result = $this->craw_model->rcwList($this->post());
+
+            if (!empty($result)) {
+
+                $this->resp = array(
+                    'MESSAGE' => WEEKLY_LIST_SUCC,
+                    'STATUS' => SUCCESS_STATUS,
+                    'DATA' => $result
+                );
+            } else {
+
+                $this->resp = array(
+                    'MESSAGE' => NO_DATA,
+                    'STATUS' => FAIL_STATUS
+                );
+            }
+        }
+        $this->response($this->resp, 200);
+    }
+
+    /*
+     *      READ RETAILER, CATALOG, WEEKLY ADS LIST
+     */
+
+    function favorites_post() {
+
+        /*
+         * TO CHECK ALL THE PARAMETER ARE BEING PASSED OR NOT ?
+         */
+
+        $allowParam = array("vDeviceID", "eStatus");
+
+        if (checkselectedparams($this->post(), $allowParam)) {
+
+            $result = $this->craw_model->favList($this->post());
+
+            if (!empty($result)) {
+
+                $this->resp = array(
+                    'MESSAGE' => WEEKLY_LIST_SUCC,
+                    'STATUS' => SUCCESS_STATUS,
+                    'DATA' => $result
+                );
+            } else {
+
+                $this->resp = array(
+                    'MESSAGE' => NO_DATA,
+                    'STATUS' => FAIL_STATUS
+                );
+            }
+        }
+        $this->response($this->resp, 200);
+    }
+
+}

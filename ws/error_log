@@ -1,0 +1,40 @@
+[07-Oct-2015 14:05:07 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[07-Oct-2015 10:05:07 America/New_York] PHP Fatal error:  Call to a member function update() on null in /home/stylekart/public_html/2015/dealbase/application/ws/libraries/REST_Controller.php on line 1446
+[07-Oct-2015 14:05:15 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[07-Oct-2015 10:05:15 America/New_York] PHP Fatal error:  Call to a member function update() on null in /home/stylekart/public_html/2015/dealbase/application/ws/libraries/REST_Controller.php on line 1446
+[07-Oct-2015 14:11:08 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[07-Oct-2015 14:11:08 UTC] PHP Notice:  Constant PROJ_TITLE already defined in /home/stylekart/public_html/2015/dealbase/application/ws/config/constants.php on line 69
+[07-Oct-2015 14:11:44 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[07-Oct-2015 14:18:38 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[07-Oct-2015 14:19:30 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[07-Oct-2015 14:19:42 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[07-Oct-2015 14:21:19 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[07-Oct-2015 14:21:57 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:29:57 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:30:05 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:30:13 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:30:30 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:31:29 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:31:42 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:32:09 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:32:47 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:33:02 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:33:18 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:33:38 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:33:46 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:34:24 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:35:07 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:35:28 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:35:34 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:35:59 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:36:36 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:36:52 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:37:09 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:37:31 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:37:35 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:38:00 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:38:20 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[08-Oct-2015 05:38:42 UTC] PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[10-Oct-2015 16:18:09 America/New_York] PHP Fatal error:  Call to a member function update() on null in /home/stylekart/public_html/2015/dealbase/application/ws/libraries/REST_Controller.php on line 1446
+[10-Oct-2015 16:18:56 America/New_York] PHP Fatal error:  Call to a member function update() on null in /home/stylekart/public_html/2015/dealbase/application/ws/libraries/REST_Controller.php on line 1446
+[10-Oct-2015 16:19:25 America/New_York] PHP Fatal error:  Call to a member function update() on null in /home/stylekart/public_html/2015/dealbase/application/ws/libraries/REST_Controller.php on line 1446
